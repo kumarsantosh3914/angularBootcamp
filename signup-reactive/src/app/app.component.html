@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="card bg-dark text-white m-3 mt-5">
+      <h5 class="card-header text-center">
+        <img src="../assets/lco.png" alt="" width="30" height="30" class="mr-2" />
+        LCO Signup Form
+      </h5>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group col-6">
+              <label>First Name</label>
+              <input
+              type="text" 
+              class="form-control"
+              formControlName="firstName"
+              [ngClass]=" { 'is-invalid': submitted && 'h.firstName.erros' } " 
+              />
+              <div class="text-warning">
+                <div>
+                  First Name is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-6">
+              <label>Last Name</label>
+              <input 
+              type="text" 
+              class="form-control"
+              formControlName="lastName"
+              [ngClass]=" { 'is-invalid': submitted && 'h.lastName.erros' } " 
+              />
+              <div class="text-warning">
+                <div>
+                  Last Name is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input 
+            type="text" 
+            class="form-control"
+            formControlName="email"
+            [ngClass]=" { 'is-invalid': submitted && 'h.email.erros' } " 
+            />
+            <div class="text-warning">
+              <div>Email is required</div>
+              <div>
+                Email must be a valid email address
+              </div>
+            </div>
+          </div>
+  
+          <ng-container>
+            <div class="text-danger">
+              Value is required.
+            </div>
+          </ng-container>
+          <div class="form-row">
+            <div class="form-group col">
+              <label>Password</label>
+              <input 
+              type="password" 
+              class="form-control" 
+              formControlName="password"
+              [ngClass]=" { 'is-invalid': submitted && 'h.password.erros' } "
+              />
+              <div class="text-warning">
+                <div>Password is required</div>
+                <div>
+                  Password must be at least 6 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group col">
+              <label>Confirm Password</label>
+              <input 
+              type="password" 
+              class="form-control" 
+              formControlName="confirmPassword"
+              [ngClass]=" { 'is-invalid': submitted && 'h.confirmPassword.erros' } "
+              />
+              <div class="text-warning">
+                <div>
+                  Confirm Password is required
+                </div>
+                <div>
+                  Passwords must match
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group form-check">
+            <input 
+            type="checkbox" 
+            id="acceptTerms" 
+            class="form-check-input"
+            formControlName="acceptTandC"
+            [ngClass]=" { 'is-invalid': submitted && 'h.acceptTandC.erros' } " 
+            />
+            <label for="acceptTerms" class="form-check-label"
+              >Accept Terms & Conditions</label
+            >
+            <div class="text-warning">
+              Accept Ts & Cs is required
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-success btn-lg px-4 mr-3">Register</button>
+            <button (click)="onReset()" class="btn btn-warning" type="reset">
+              Reset
+            </button>
+            <p class="text white">Value: {{ registerForm.value | json }}</p>
+            <p class="text white">Value: {{ registerForm.valid | json }}</p>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
+  
